@@ -3,8 +3,7 @@ if(NOT PKG_CONFIG_FOUND)
     find_dependency(PkgConfig)
 endif()
 
-# Take care about check.pc settings
-PKG_SEARCH_MODULE(CUNIT CUnit)
+pkg_check_modules(CUNIT REQUIRED CUnit)
 
 # Look for CUNIT include dir and libraries
 IF (NOT CUNIT_FOUND)
@@ -36,5 +35,6 @@ IF (NOT CUNIT_FOUND)
     ENDIF (CUNIT_INCLUDE_DIR AND CUNIT_LIBRARIES)
 ENDIF (NOT CUNIT_FOUND)
 
+message("CUNIT_LIBRARIES ${CUNIT_LIBRARIES}")
 # Hide advanced variables from CMake GUIs
 MARK_AS_ADVANCED(CUNIT_INCLUDE_DIR CUNIT_LIBRARIES)
