@@ -8,7 +8,7 @@ message(${CUNIT_INCLUDE_DIRS})
 link_libraries("${CUNIT_LIBRARY_DIRS}/libcunit.dylib")
 
 set(TEST_SOURCES
-        transformers_test.c
+        tests.c
 )
 
 add_executable(transformers_test ${TEST_SOURCES})

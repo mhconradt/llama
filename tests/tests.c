@@ -8,48 +8,39 @@
 #include "CUnit/Automated.h"
 #include "CUnit/Console.h"
 
-#include "transformers.h"
+#include "tensor.h"
 
+#include "stdlib.h"
 #include <stdio.h>  // for printf
 
 /* Test Suite setup and cleanup functions: */
 
 int init_suite(void) { return 0; }
+
 int clean_suite(void) { return 0; }
 
 /************* Test case functions ****************/
 
-void test_case_sample(void)
-{
-    CU_ASSERT(CU_TRUE);
-    CU_ASSERT_NOT_EQUAL(2, -1);
-    CU_ASSERT_STRING_EQUAL("string #1", "string #1");
-    CU_ASSERT_STRING_NOT_EQUAL("string #1", "string #2");
-
-    CU_ASSERT(CU_FALSE);
-    CU_ASSERT_EQUAL(2, 3);
-    CU_ASSERT_STRING_NOT_EQUAL("string #1", "string #1");
-    CU_ASSERT_STRING_EQUAL("string #1", "string #2");
+void makeTensor_test_1(void) {
+    int shape[3] = {1, 2, 3};
+    struct FloatTensor tensor = makeTensor(3, shape);
+    CU_ASSERT_EQUAL(tensor.nDim, 3);
+    CU_ASSERT_EQUAL(tensor.size, 6);
+    CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
+    freeTensor(&tensor);
 }
 
-void max_test_1(void) {
-    CU_ASSERT_EQUAL( max(1,2), 2);
-    CU_ASSERT_EQUAL( max(2,1), 2);
-}
-
-void max_test_2(void) {
-    CU_ASSERT_EQUAL( max(2,2), 2);
-    CU_ASSERT_EQUAL( max(0,0), 0);
-    CU_ASSERT_EQUAL( max(-1,-1), -1);
-}
-
-void max_test_3(void) {
-    CU_ASSERT_EQUAL( max(-1,-2), -1);
+void freeTensor_test_1(void) {
+    int shape[3] = {1, 2, 3};
+    struct FloatTensor tensor = makeTensor(3, shape);
+    freeTensor(&tensor);
+    CU_ASSERT_EQUAL(tensor.data, NULL);
+    CU_ASSERT_EQUAL(tensor.shape, NULL);
 }
 
 /************* Test Runner Code goes here **************/
 
-int main ( void ) {
+int main(void) {
     CU_pSuite pSuite = NULL;
 
     /* initialize the CUnit test registry */
@@ -64,9 +55,9 @@ int main ( void ) {
     }
 
     /* add the tests to the suite */
-    if ((NULL == CU_add_test(pSuite, "max_test_1", max_test_1)) ||
-        (NULL == CU_add_test(pSuite, "max_test_2", max_test_2)) ||
-        (NULL == CU_add_test(pSuite, "max_test_3", max_test_3))
+    if (
+            (NULL == CU_add_test(pSuite, "makeTensor_test_1", makeTensor_test_1)) ||
+            (NULL == CU_add_test(pSuite, "freeTensor_test_1", freeTensor_test_1))
             ) {
         CU_cleanup_registry();
         return CU_get_error();
