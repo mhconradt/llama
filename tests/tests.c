@@ -27,6 +27,31 @@ void makeTensor_test_1(void) {
     CU_ASSERT_EQUAL(tensor.nDim, 3);
     CU_ASSERT_EQUAL(tensor.size, 6);
     CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
+    // How to test tensor.data?
+    freeTensor(&tensor);
+}
+
+void makeFull_test_1(void) {
+    int shape[3] = {1, 2, 3};
+    struct FloatTensor tensor = makeFull(3, shape, 0.5);
+    CU_ASSERT_EQUAL(tensor.nDim, 3);
+    CU_ASSERT_EQUAL(tensor.size, 6);
+    CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
+    float data[6] = {0.5};
+    CU_ASSERT_TRUE(memcmp(tensor.data, data, 6) == 0);
+    // How to test tensor.data?
+    freeTensor(&tensor);
+}
+
+void makeZeros_test_1(void) {
+    int shape[3] = {1, 2, 3};
+    struct FloatTensor tensor = makeZeros(3, shape);
+    CU_ASSERT_EQUAL(tensor.nDim, 3);
+    CU_ASSERT_EQUAL(tensor.size, 6);
+    CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
+    float data[6] = {0.0};
+    CU_ASSERT_TRUE(memcmp(tensor.data, data, 6) == 0);
+    // How to test tensor.data?
     freeTensor(&tensor);
 }
 
@@ -57,6 +82,8 @@ int main(void) {
     /* add the tests to the suite */
     if (
             (NULL == CU_add_test(pSuite, "makeTensor_test_1", makeTensor_test_1)) ||
+            (NULL == CU_add_test(pSuite, "makeZeros_test_1", makeZeros_test_1)) ||
+            (NULL == CU_add_test(pSuite, "makeZeros_test_1", makeFull_test_1)) ||
             (NULL == CU_add_test(pSuite, "freeTensor_test_1", freeTensor_test_1))
             ) {
         CU_cleanup_registry();

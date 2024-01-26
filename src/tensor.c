@@ -52,3 +52,15 @@ void freeTensor(struct FloatTensor *tensor) {
         tensor->size = 0;
     }
 }
+
+struct FloatTensor makeFull(int nDim, int shape[], float value) {
+    struct FloatTensor tensor = makeTensor(nDim, shape);
+    for (int i = 0; i < tensor.size; i++) {
+        tensor.data[i] = value;
+    }
+    return tensor;
+}
+
+struct FloatTensor makeZeros(int nDim, int shape[]) {
+    return makeFull(nDim, shape, 0.0f);
+}

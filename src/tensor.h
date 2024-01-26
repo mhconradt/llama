@@ -14,6 +14,10 @@ typedef struct FloatTensor {
 
 extern struct FloatTensor makeTensor(int nDim, int shape[]);
 
+extern struct FloatTensor makeZeros(int nDim, int shape[]);
+
+extern struct FloatTensor makeFull(int nDim, int shape[], float value);
+
 extern void freeTensor(Tensor *tensor);
 
 #endif //TRANSFORMERS_TENSOR_H
