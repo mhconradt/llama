@@ -1,6 +1,6 @@
 
 set(LIB_SOURCES
-        max.c
+        transformers.c
 )
 
 set(MAIN_SOURCES
@@ -9,7 +9,7 @@ set(MAIN_SOURCES
 
 set(HEADERS
         ${CONFIG_HEADER}
-        max.h
+        transformers.h
 )
 
 add_library(transformers STATIC ${LIB_SOURCES} ${HEADERS})
@@ -22,4 +22,4 @@ install(TARGETS transformers
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/max.h DESTINATION include)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/transformers.h DESTINATION include)
