@@ -2,8 +2,8 @@
 // Created by Maxwell Conradt on 1/28/24.
 //
 
-#ifndef TRANSFORMERS_CONFIG_H
-#define TRANSFORMERS_CONFIG_H
+#ifndef TRANSFORMERS_LLAMACONFIG_H
+#define TRANSFORMERS_LLAMACONFIG_H
 
 typedef struct LlamaConfig {
     int vocabSize;
@@ -15,4 +15,6 @@ typedef struct LlamaConfig {
 
 extern const LlamaConfig LLAMA_7B;
 
-#endif //TRANSFORMERS_CONFIG_H
+extern int maxi(int n1, int n2);
+
+#endif //TRANSFORMERS_LLAMACONFIG_H

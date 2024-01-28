@@ -5,14 +5,10 @@
 #include "stdio.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
-#include "CUnit/Automated.h"
-#include "CUnit/Console.h"
 
 #include "tensor.h"
-#include "config.h"
+#include "llamaConfig.h"
 
-#include "stdlib.h"
-#include <stdio.h>  // for printf
 
 /* Test Suite setup and cleanup functions: */
 
@@ -74,6 +70,10 @@ void freeTensor_test_1(void) {
 //     };
 //     CU_ASSERT_EQUAL(LLAMA_7B.vocabSize, 32000);
 // }
+
+void max_test1(void ) {
+    CU_ASSERT_EQUAL(maxi(2, 0), 2);
+}
 
 /************* Test Runner Code goes here **************/
 

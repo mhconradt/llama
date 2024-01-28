@@ -2,7 +2,7 @@
 // Created by Maxwell Conradt on 1/28/24.
 //
 
-#include "config.h"
+#include "llamaConfig.h"
 
 const LlamaConfig LLAMA_7B = {
         4096,
@@ -11,3 +11,10 @@ const LlamaConfig LLAMA_7B = {
         32,
         32
 };
+
+int maxi(int n1, int n2) {
+    if (n1 > n2) {
+        return n1;
+    }
+    return n2;
+}

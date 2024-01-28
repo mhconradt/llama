@@ -1,7 +1,7 @@
 
 set(LIB_SOURCES
         tensor.c
-        config.c
+        llamaConfig.c
 )
 
 set(MAIN_SOURCES
@@ -11,7 +11,7 @@ set(MAIN_SOURCES
 set(HEADERS
         ${CONFIG_HEADER}
         tensor.h
-        config.h
+        llamaConfig.h
 )
 
 add_library(transformers STATIC ${LIB_SOURCES} ${HEADERS})
@@ -24,4 +24,4 @@ install(TARGETS transformers
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tensor.h ${CMAKE_CURRENT_SOURCE_DIR}/config.h DESTINATION include)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tensor.h ${CMAKE_CURRENT_SOURCE_DIR}/llamaConfig.h DESTINATION include)

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "config.h"
+#include "llamaConfig.h"
 
 int main() {
     printf("LLaMA Vocab Size %d \n", LLAMA_7B.vocabSize);
