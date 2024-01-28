@@ -11,8 +11,9 @@ typedef struct AttentionParams {
     Tensor qProj;
     Tensor kProj;
     Tensor vProj;
+    Tensor oProj;
 } AttentionParams;
 
-void selfAttention(Tensor hiddenStates)
+void selfAttention(Tensor hiddenStates);
 
 #endif //TRANSFORMERS_ATTENTION_H
