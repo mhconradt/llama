@@ -6,15 +6,16 @@
 #define TRANSFORMERS_LLAMACONFIG_H
 
 typedef struct LlamaConfig {
-    int vocabSize;
     int hiddenSize;
-    int nHiddenLayers;
+    int intermediateSize;
+    int maxPositionEmbeddings;
     int nAttentionHeads;
+    int nHiddenLayers;
     int nKeyValueHeads;
+    float rmsNormEps;
+    int vocabSize;
 } LlamaConfig;
 
 extern const LlamaConfig LLAMA_7B;
-
-extern int maxi(int n1, int n2);
 
 #endif //TRANSFORMERS_LLAMACONFIG_H

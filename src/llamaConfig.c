@@ -7,14 +7,10 @@
 const LlamaConfig LLAMA_7B = {
         4096,
         11008,
+        4096,
         32,
         32,
-        32
+        32,
+        1e-05f,
+        32000,
 };
-
-int maxi(int n1, int n2) {
-    if (n1 > n2) {
-        return n1;
-    }
-    return n2;
-}

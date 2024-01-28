@@ -2,6 +2,7 @@
 // Created by Maxwell Conradt on 1/21/24.
 //
 
+#include "stdbool.h"
 #include "stdio.h"
 #include "CUnit/CUnit.h"
 #include "CUnit/Basic.h"
@@ -60,20 +61,18 @@ void freeTensor_test_1(void) {
     CU_ASSERT_EQUAL(tensor.shape, NULL);
 }
 
-// void llamaConfig_test_7b(void) {
-//     LlamaConfig LLAMA_7B = {
-//             4096,
-//             11008,
-//             32,
-//             32,
-//             32
-//     };
-//     CU_ASSERT_EQUAL(LLAMA_7B.vocabSize, 32000);
-// }
-
-void max_test1(void ) {
-    CU_ASSERT_EQUAL(maxi(2, 0), 2);
+void llamaConfig_test_7b(void) {
+    CU_ASSERT_EQUAL(LLAMA_7B.hiddenSize, 4096);
+    CU_ASSERT_EQUAL(LLAMA_7B.intermediateSize, 11008);
+    CU_ASSERT_EQUAL(LLAMA_7B.maxPositionEmbeddings, 4096);
+    CU_ASSERT_EQUAL(LLAMA_7B.nAttentionHeads, 32);
+    CU_ASSERT_EQUAL(LLAMA_7B.nHiddenLayers, 32);
+    CU_ASSERT_EQUAL(LLAMA_7B.nKeyValueHeads, 32);
+    CU_ASSERT_EQUAL(LLAMA_7B.rmsNormEps, 1e-5f);
+    CU_ASSERT_EQUAL(LLAMA_7B.vocabSize, 32000);
 }
+
+
 
 /************* Test Runner Code goes here **************/
 
@@ -96,7 +95,8 @@ int main(void) {
             (NULL == CU_add_test(pSuite, "makeTensor_test_1", makeTensor_test_1)) ||
             (NULL == CU_add_test(pSuite, "makeZeros_test_1", makeZeros_test_1)) ||
             (NULL == CU_add_test(pSuite, "makeZeros_test_1", makeFull_test_1)) ||
-            (NULL == CU_add_test(pSuite, "freeTensor_test_1", freeTensor_test_1))
+            (NULL == CU_add_test(pSuite, "freeTensor_test_1", freeTensor_test_1)) ||
+            (NULL == CU_add_test(pSuite, "llamaConfig_test_7b", llamaConfig_test_7b))
             ) {
         CU_cleanup_registry();
         return CU_get_error();
