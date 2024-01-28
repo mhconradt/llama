@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "config.h"
 
 int main() {
-    printf("Hello, World!\n");
+    printf("LLaMA Vocab Size %d \n", LLAMA_7B.vocabSize);
     return 0;
 }

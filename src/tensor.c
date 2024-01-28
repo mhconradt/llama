@@ -5,8 +5,8 @@
 #include <string.h>  // For memcpy
 #include "tensor.h"
 
-struct FloatTensor makeTensor(int nDim, int shape[]) {
-    struct FloatTensor tensor;
+struct Tensor makeTensor(int nDim, int shape[]) {
+    struct Tensor tensor;
 
     if (nDim <= 0 || shape == NULL) {
         // Handle error: Invalid dimensions or null shape array
@@ -38,7 +38,7 @@ struct FloatTensor makeTensor(int nDim, int shape[]) {
     return tensor;
 }
 
-void freeTensor(struct FloatTensor *tensor) {
+void freeTensor(struct Tensor *tensor) {
     if (tensor != NULL) {
         if (tensor->data != NULL) {
             free(tensor->data);
@@ -53,14 +53,14 @@ void freeTensor(struct FloatTensor *tensor) {
     }
 }
 
-struct FloatTensor makeFull(int nDim, int shape[], float value) {
-    struct FloatTensor tensor = makeTensor(nDim, shape);
+struct Tensor makeFull(int nDim, int shape[], float value) {
+    struct Tensor tensor = makeTensor(nDim, shape);
     for (int i = 0; i < tensor.size; i++) {
         tensor.data[i] = value;
     }
     return tensor;
 }
 
-struct FloatTensor makeZeros(int nDim, int shape[]) {
+struct Tensor makeZeros(int nDim, int shape[]) {
     return makeFull(nDim, shape, 0.0f);
 }

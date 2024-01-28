@@ -9,6 +9,7 @@
 #include "CUnit/Console.h"
 
 #include "tensor.h"
+#include "config.h"
 
 #include "stdlib.h"
 #include <stdio.h>  // for printf
@@ -23,7 +24,7 @@ int clean_suite(void) { return 0; }
 
 void makeTensor_test_1(void) {
     int shape[3] = {1, 2, 3};
-    struct FloatTensor tensor = makeTensor(3, shape);
+    struct Tensor tensor = makeTensor(3, shape);
     CU_ASSERT_EQUAL(tensor.nDim, 3);
     CU_ASSERT_EQUAL(tensor.size, 6);
     CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
@@ -33,7 +34,7 @@ void makeTensor_test_1(void) {
 
 void makeFull_test_1(void) {
     int shape[3] = {1, 2, 3};
-    struct FloatTensor tensor = makeFull(3, shape, 0.5);
+    struct Tensor tensor = makeFull(3, shape, 0.5);
     CU_ASSERT_EQUAL(tensor.nDim, 3);
     CU_ASSERT_EQUAL(tensor.size, 6);
     CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
@@ -45,7 +46,7 @@ void makeFull_test_1(void) {
 
 void makeZeros_test_1(void) {
     int shape[3] = {1, 2, 3};
-    struct FloatTensor tensor = makeZeros(3, shape);
+    struct Tensor tensor = makeZeros(3, shape);
     CU_ASSERT_EQUAL(tensor.nDim, 3);
     CU_ASSERT_EQUAL(tensor.size, 6);
     CU_ASSERT_TRUE(memcmp(shape, tensor.shape, 3) == 0);
@@ -57,11 +58,22 @@ void makeZeros_test_1(void) {
 
 void freeTensor_test_1(void) {
     int shape[3] = {1, 2, 3};
-    struct FloatTensor tensor = makeTensor(3, shape);
+    struct Tensor tensor = makeTensor(3, shape);
     freeTensor(&tensor);
     CU_ASSERT_EQUAL(tensor.data, NULL);
     CU_ASSERT_EQUAL(tensor.shape, NULL);
 }
+
+// void llamaConfig_test_7b(void) {
+//     LlamaConfig LLAMA_7B = {
+//             4096,
+//             11008,
+//             32,
+//             32,
+//             32
+//     };
+//     CU_ASSERT_EQUAL(LLAMA_7B.vocabSize, 32000);
+// }
 
 /************* Test Runner Code goes here **************/
 

@@ -5,18 +5,18 @@
 #ifndef TRANSFORMERS_TENSOR_H
 #define TRANSFORMERS_TENSOR_H
 
-typedef struct FloatTensor {
+typedef struct Tensor {
     int nDim;
     int size;
     float *data;
     int *shape;
 } Tensor;
 
-extern struct FloatTensor makeTensor(int nDim, int shape[]);
+extern struct Tensor makeTensor(int nDim, int shape[]);
 
-extern struct FloatTensor makeZeros(int nDim, int shape[]);
+extern struct Tensor makeZeros(int nDim, int shape[]);
 
-extern struct FloatTensor makeFull(int nDim, int shape[], float value);
+extern struct Tensor makeFull(int nDim, int shape[], float value);
 
 extern void freeTensor(Tensor *tensor);
 
